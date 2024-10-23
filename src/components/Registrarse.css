@@ -1,0 +1,55 @@
+/* src/components/Registrarse.css */
+.registro-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .registro-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .registro-container form div {
+    margin-bottom: 15px;
+  }
+  
+  .registro-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .registro-container input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .registro-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .registro-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  
+  .success {
+    color: green;
+    text-align: center;
+  }
+  
