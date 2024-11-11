@@ -8,9 +8,9 @@ import './Catalogo.css'; // Asegúrate de importar el CSS
 
 const Catalogo = () => {
   const [estampas] = useState([
-    { id: 1, nombre: 'Estampa Dragón', precio: 50000, imagen: DragonImg, descripcion: 'Descripción de la estampa dragón.' },
-    { id: 2, nombre: 'Estampa Tigre', precio: 60000, imagen: TigreImg, descripcion: 'Descripción de la estampa tigre.' },
-    { id: 3, nombre: 'Estampa Lobo', precio: 48000, imagen: LoboImg, descripcion: 'Descripción de la estampa lobo.' },
+    { id: 1, nombre: 'Estampa Dragón', precio: 50000, imagen: DragonImg, descripcion: 'Descripción de la estampa dragón.', disponibilidad: 500 },
+    { id: 2, nombre: 'Estampa Tigre', precio: 60000, imagen: TigreImg, descripcion: 'Descripción de la estampa tigre.', disponibilidad: 300 },
+    { id: 3, nombre: 'Estampa Lobo', precio: 48000, imagen: LoboImg, descripcion: 'Descripción de la estampa lobo.', disponibilidad: 800 },
   ]);
   
   const [estampaSeleccionada, setEstampaSeleccionada] = useState(null);
@@ -35,7 +35,8 @@ const Catalogo = () => {
               <div className="catalogo-item" key={estampa.id} onClick={() => handleSeleccionarEstampa(estampa)}>
                 <img src={estampa.imagen} alt={estampa.nombre} className="catalogo-imagen" />
                 <h2 className="catalogo-titulo">{estampa.nombre}</h2>
-                <p className="catalogo-precio">Precio: ${estampa.precio}</p>
+                {/* El "tolocalstring" es para visualizar las unidades y se pueda leer mejor el precio*/}
+                <p className="catalogo-precio">Precio: ${estampa.precio.toLocaleString()}</p>
               </div>
             ))}
           </div>
@@ -46,4 +47,3 @@ const Catalogo = () => {
 };
 
 export default Catalogo;
-

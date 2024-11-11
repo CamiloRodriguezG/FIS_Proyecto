@@ -1,0 +1,54 @@
+/* App Styles */
+.App {
+  text-align: center;
+  font-family: 'Roboto', sans-serif; /* Ejemplo de fuente */
+  display: flex;
+  flex-direction: column;
+  min-height: 130vh; /* Altura mínima para llenar la pantalla */
+  background-image: url('./Imagenes/Fondo.png');
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background-position: center; /* Centra la imagen de fondo */
+}
+
+.App-header {
+  background-color: #565759; /* Fondo oscuro */
+  flex: 1; /* Esto permite que el encabezado se expanda y empuje el pie de página */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px; /* Espaciado interno */
+}
+
+.App-link {
+  color: #61dafb; /* Color para los enlaces */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.App-link:hover {
+  text-decoration: underline; /* Subrayado en hover */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #565759; /* Mismo fondo que el encabezado */
+  color: white; /* Color de texto */
+  padding: 10px 0; /* Espaciado interno del pie de página */
+  margin-top: auto; /* Asegura que el pie de página esté al final */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(8px + 2vmin); /* Tamaño de fuente más pequeño en móviles */
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header {
+    padding: 10px; /* Menos padding en móviles pequeños */
+  }
+}
+

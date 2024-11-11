@@ -1,58 +1,57 @@
 // src/components/Footer.js
 import React from 'react';
 import './Footer.css';
+import logo from '../Imagenes/Logo_2.png';
+import { SocialIcon } from 'react-social-icons';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-logo">
-        <img src="path_to_logo" alt="Logo" />
+        <img src={logo} alt="Logo" />
       </div>
       <div className="footer-links">
         <div className="footer-column">
-          <h4>Use cases</h4>
+          <h4>Más información</h4>
           <ul>
-            <li><a href="#">UI design</a></li>
-            <li><a href="#">UX design</a></li>
-            <li><a href="#">Wireframing</a></li>
-            <li><a href="#">Diagramming</a></li>
-            <li><a href="#">Brainstorming</a></li>
-            <li><a href="#">Online whiteboard</a></li>
-            <li><a href="#">Team collaboration</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Equipo dev</a></li>
+            <li><a href="#">Visión y trayecto</a></li>
+            <li><a href="#">Afiliados</a></li>
+            <li><a href="#">Opiniones</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">PQRS</a></li>
           </ul>
         </div>
         <div className="footer-column">
-          <h4>Explore</h4>
+          <h4>Explora</h4>
           <ul>
-            <li><a href="#">Design</a></li>
-            <li><a href="#">Prototyping</a></li>
-            <li><a href="#">Development features</a></li>
-            <li><a href="#">Design systems</a></li>
-            <li><a href="#">Collaboration features</a></li>
-            <li><a href="#">Design process</a></li>
-            <li><a href="#">FigJam</a></li>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Términos de uso</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Política de cookies</a></li>
+            <li><a href="#">Nuestras sucursales</a></li>
+            <li><a href="#">Soporte técnico</a></li>
           </ul>
         </div>
         <div className="footer-column">
-          <h4>Resources</h4>
+          <h4>Recursos</h4>
           <ul>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Best practices</a></li>
-            <li><a href="#">Colors</a></li>
-            <li><a href="#">Color wheel</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Developers</a></li>
-            <li><a href="#">Resource library</a></li>
+            <li><a href="#">Colores</a></li>
+            <li><a href="#">Desarrolladores</a></li>
+            <li><a href="#">Librería de recursos</a></li>
           </ul>
         </div>
       </div>
-      <div className="footer-social">
-        <a href="#"><img src="path_to_social_icon" alt="Instagram" /></a>
-        <a href="#"><img src="path_to_social_icon" alt="YouTube" /></a>
-        <a href="#"><img src="path_to_social_icon" alt="LinkedIn" /></a>
+      <div className="social-icons">
+        <SocialIcon url="https://www.instagram.com" target="_blank" style={{ height: 35, width: 35 }} />
+        <SocialIcon url="https://www.youtube.com" target="_blank" style={{ height: 35, width: 35 }} />
+        <SocialIcon url="https://www.linkedin.com" target="_blank" style={{ height: 35, width: 35 }} />
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
