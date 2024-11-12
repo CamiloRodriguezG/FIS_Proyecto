@@ -139,6 +139,7 @@ body {
 
 .container-welcome h3{
     font-size: 40px;
+    color: white;
 }
 
 .container-welcome p{
@@ -245,4 +246,13 @@ body {
     margin-top: 5px; /* Espacio entre el mensaje y el campo de entrada */
     font-family: Arial, sans-serif; /* Fuente más legible */
   }
-  
+/* Asegúrate de agregar clases o identifica los elementos correctamente */
+.container-form .mensaje-registro {
+    color: white;  /* Cambia el color del texto a blanco */
+    font-family: "Montserrat", sans-serif;
+}
+
+.container-form .mensaje-login {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}

@@ -1,10 +1,12 @@
-//Catalogo.js
+// Catalogo.js
 import React, { useState } from 'react';
 import EstampaDetalle from './EstampaDetalle'; 
+import { useAuth } from './Autenticacion'; // Importa el hook de autenticación
+import { useNavigate } from 'react-router-dom'; // Para la navegación
 import DragonImg from '../Imagenes/Dragon.jpg';
 import TigreImg from '../Imagenes/Tigre.jpg';
 import LoboImg from '../Imagenes/Lobo.jpg';
-import './Catalogo.css'; // Asegúrate de importar el CSS
+import './Catalogo.css';
 
 const Catalogo = () => {
   const [estampas] = useState([
@@ -12,11 +14,24 @@ const Catalogo = () => {
     { id: 2, nombre: 'Estampa Tigre', precio: 60000, imagen: TigreImg, descripcion: 'Descripción de la estampa tigre.', disponibilidad: 300 },
     { id: 3, nombre: 'Estampa Lobo', precio: 48000, imagen: LoboImg, descripcion: 'Descripción de la estampa lobo.', disponibilidad: 800 },
   ]);
-  
+
   const [estampaSeleccionada, setEstampaSeleccionada] = useState(null);
+  const { isAuthenticated, userRole } = useAuth(); // Obtener estado de autenticación y rol
+  const navigate = useNavigate();
 
   const handleSeleccionarEstampa = (estampa) => {
-    setEstampaSeleccionada(estampa);
+    if (!isAuthenticated) {
+      // Mensaje para usuarios no autenticados
+      if (window.confirm("Debes iniciar sesión como cliente para comprar. ¿Deseas ir a la página de inicio de sesión?")) {
+        navigate('/Iniciar-sesion');
+      }
+    } else if (userRole === 'artista' || userRole === 'admin') {
+      // Mensaje para roles no permitidos
+      alert("No puedes realizar compras con este usuario. Solo los clientes pueden comprar.");
+    } else {
+      // Si está autenticado como cliente, permite la selección de la estampa
+      setEstampaSeleccionada(estampa);
+    }
   };
 
   const handleCerrarDetalle = () => {
@@ -35,7 +50,6 @@ const Catalogo = () => {
               <div className="catalogo-item" key={estampa.id} onClick={() => handleSeleccionarEstampa(estampa)}>
                 <img src={estampa.imagen} alt={estampa.nombre} className="catalogo-imagen" />
                 <h2 className="catalogo-titulo">{estampa.nombre}</h2>
-                {/* El "tolocalstring" es para visualizar las unidades y se pueda leer mejor el precio*/}
                 <p className="catalogo-precio">Precio: ${estampa.precio.toLocaleString()}</p>
               </div>
             ))}
@@ -47,3 +61,4 @@ const Catalogo = () => {
 };
 
 export default Catalogo;
+

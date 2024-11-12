@@ -1,5 +1,5 @@
 // src/components/PerfilUsuarioArtista.js
-import React, { useState, useEffect } from 'react'; // Asegúrate de importar useState y useEffect
+import React, { useState, useEffect } from 'react'; 
 import { useAuth } from './Autenticacion'; // Asegúrate de que useAuth esté bien importado
 import './PerfilUsuarioArtista.css';
 
@@ -8,9 +8,11 @@ const PerfilUsuarioArtista = () => {
     const [artista, setArtista] = useState(null);
 
     useEffect(() => {
+        console.log('Autenticación:', isAuthenticated);
+        console.log('Rol de usuario:', userRole);
         // Verificar si el usuario está autenticado y es un artista
         if (isAuthenticated && userRole === 'artista') {
-            // Obtener los datos del artista (puedes simularlo o hacerlo con una API)
+            // Simulación de obtención de datos del artista (esto puede ser una API)
             setArtista({
                 nombre: "Ana Gómez",
                 celular: "0987654321",
@@ -59,3 +61,4 @@ const PerfilUsuarioArtista = () => {
 }
 
 export default PerfilUsuarioArtista;
+

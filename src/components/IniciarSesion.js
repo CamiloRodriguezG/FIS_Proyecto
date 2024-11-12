@@ -30,6 +30,7 @@ const IniciarSesion = () => {
 
   const handleSignInSubmit = (e) => {
     e.preventDefault();
+    setError('');  // Limpia el mensaje de error antes de la verificación
     if (email === 'admin@gmail.com' && password === '123') {
       login('admin');
     } else if (email === 'cliente@gmail.com' && password === '123') {
@@ -40,6 +41,7 @@ const IniciarSesion = () => {
       setError('Correo o contraseña incorrectos');
     }
   };
+  
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -81,6 +83,15 @@ const IniciarSesion = () => {
 
   const handleToggle = () => {
     setToggleForm((prev) => !prev);
+    setError(''); // Limpiar errores
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setRol('cliente');
+    setNombre('');
+    setNickname('');
+    setNumCelular('');
+    setDireccionResidencia('');
   };
 
   const handleInputChange = (setter, setLimitReached, maxLength) => (e) => {
@@ -92,7 +103,7 @@ const IniciarSesion = () => {
   return (
     <div className={`container ${toggleForm ? 'toggle' : ''}`}>
       <div className="container-form">
-        <form className="log-in" onSubmit={handleSignInSubmit}>
+        <form className="log-in" data-testid="login-form" onSubmit={handleSignInSubmit}>
           <h2>Iniciar Sesión</h2>
           <span><strong>Use su correo y contraseña</strong></span>
           <div className="container-input">
@@ -137,7 +148,7 @@ const IniciarSesion = () => {
               </select>
             </label>
           </div>
-          {error && <p className="error">{error}</p>}
+          {error && <p data-testid="login-error-message" className="error">{error}</p>}
           <button type="submit" className="button" data-testid="login-button">Iniciar Sesión</button>
         </form>
       </div>
@@ -212,7 +223,7 @@ const IniciarSesion = () => {
               maxLength={30}
               required
               aria-label="Confirmar contraseña"
-              data-testid="confirm-password-input"
+              data-testid="confirm-password-input-signup"
             />
           </div>
           <div className="container-input">
@@ -257,7 +268,7 @@ const IniciarSesion = () => {
               <option value="artista">Artista</option>
             </select>
           </label>
-          {error && <p className="error">{error}</p>}
+          {error && <p data-testid="sign-error-message" className="error">{error}</p>}
           <button type="submit" className="button" data-testid="register-button">Registrarse</button>
         </form>
       </div>
@@ -265,16 +276,24 @@ const IniciarSesion = () => {
       <div className="container-welcome">
         <div className="welcome-sign-up welcome">
           <h3>Bienvenido</h3>
-          <p>Si aún no tiene una cuenta, regístrese para acceder a todas las funciones del sitio</p>
-          <button className="button" data-testid="registro-button" type="button" onClick={handleToggle}>
-            Registrese Aquí
-          </button>
+          <span className="mensaje-registro">Si aún no tiene una cuenta, regístrese para acceder a todas las funciones del sitio</span>
+          <button className="button" data-testid="registro-button" type="button" onClick={() => { 
+            handleToggle();
+            setEmail('');  // Limpia el campo de email
+            setPassword('');  // Limpia el campo de contraseña
+            setRol('cliente');  // Limpia el campo del rol
+        }}>Regístrese Aquí
+        </button>
         </div>
         <div className="welcome-sign-in welcome">
           <h3>Bienvenido</h3>
-          <p>Si ya tiene una cuenta, inicie sesión para acceder a todas las funciones del sitio</p>
-          <button className="button" data-testid="inicio-button" type="button" onClick={handleToggle}>
-            Inicie Sesión Aquí
+          <span className="mensaje-login">Si ya tiene una cuenta, inicie sesión para acceder a todas las funciones del sitio</span>
+          <button className="button" data-testid="inicio-button" type="button" onClick={() => {
+              handleToggle();
+              setEmail('');  // Limpia el campo de email
+              setPassword('');  // Limpia el campo de contraseña
+              setRol('cliente');  // Limpia el campo del rol
+          }}>Inicie Sesión Aquí
           </button>
         </div>
       </div>

@@ -4,31 +4,60 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth debe ser usado con el AuthProvider');
+  }
+  return context;
+};
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const navigate = useNavigate();
 
+  // useEffect para verificar el estado inicial de autenticación
   useEffect(() => {
-    // Recuperar el estado de autenticación y el rol del usuario desde localStorage
-    const storedAuth = localStorage.getItem('isAuthenticated');
+    const storedAuth = localStorage.getItem('isAuthenticated') === 'true'; // Asegura que sea un booleano
     const storedRole = localStorage.getItem('userRole');
-
-    if (storedAuth === 'true') {
+    
+    if (storedAuth && storedRole) {
       setIsAuthenticated(true);
       setUserRole(storedRole);
     }
   }, []);
 
+  // Función para iniciar sesión
   const login = (role) => {
+    if (!['admin', 'cliente', 'artista'].includes(role)) {
+      console.error('Rol de usuario inválido');
+      return;
+    }
+
+    // Actualizar el estado y localStorage de manera conjunta
     setIsAuthenticated(true);
     setUserRole(role);
-    localStorage.setItem('isAuthenticated', true); // Guardar en localStorage
-    localStorage.setItem('userRole', role); // Guardar el rol del usuario
+    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('userRole', role);
 
-    // Redirigir según el rol
+    // Redirigir según el rol del usuario
+    navigateToRole(role);
+  };
+
+  // Función para cerrar sesión
+  const logout = () => {
+    setIsAuthenticated(false);
+    setUserRole(null);
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userRole');
+    
+    // Redirigir a la página principal
+    navigate('/');
+  };
+
+  // Función para redirigir al usuario según su rol
+  const navigateToRole = (role) => {
     if (role === 'admin') {
       navigate('/Admin');
     } else if (role === 'cliente') {
@@ -36,14 +65,6 @@ export const AuthProvider = ({ children }) => {
     } else if (role === 'artista') {
       navigate('/PerfilUsuarioArtista');
     }
-  };
-
-  const logout = () => {
-    setIsAuthenticated(false);
-    setUserRole(null);
-    localStorage.removeItem('isAuthenticated'); // Eliminar del localStorage
-    localStorage.removeItem('userRole'); // Eliminar el rol del localStorage
-    navigate('/');
   };
 
   return (

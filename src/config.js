@@ -1,2 +1,2 @@
 // config.js
-export const API_BASE_URL = "https://tu-enlace-railway.aqui/api";
+export const API_BASE_URL = "http://fis-backend-production.up.railway.app/"; 

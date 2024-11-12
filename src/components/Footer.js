@@ -14,33 +14,32 @@ const Footer = () => {
         <div className="footer-column">
           <h4>Más información</h4>
           <ul>
-            <li><a href="#">Sobre nosotros</a></li>
-            <li><a href="#">Equipo dev</a></li>
-            <li><a href="#">Visión y trayecto</a></li>
-            <li><a href="#">Afiliados</a></li>
-            <li><a href="#">Opiniones</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">PQRS</a></li>
+            <li><a href="/SobreNosotros">Sobre nosotros</a></li>
+            <li><a href="/EquipoDev">Equipo dev</a></li>
+            <li><a href="/Vision">Visión y trayecto</a></li>
+            <li><a href="/Afiliados">Afiliados</a></li>
+            <li><a href="/Opiniones">Opiniones</a></li>
+            <li><a href="/Contacto">Contacto</a></li>
+            <li><a href="/PQRS">PQRS</a></li>
           </ul>
         </div>
         <div className="footer-column">
           <h4>Explora</h4>
           <ul>
-            <li><a href="#">Aviso legal</a></li>
-            <li><a href="#">Términos de uso</a></li>
-            <li><a href="#">Política de privacidad</a></li>
-            <li><a href="#">Política de cookies</a></li>
-            <li><a href="#">Nuestras sucursales</a></li>
-            <li><a href="#">Soporte técnico</a></li>
+            <li><a href="/AvisoLegal">Aviso legal</a></li>
+            <li><a href="/PoliticaUso">Términos de uso</a></li>
+            <li><a href="/PoliticaPrivacidad">Política de privacidad</a></li>
+            <li><a href="/PoliticaCookies">Política de cookies</a></li>
+            <li><a href="/NuestrasSucursales">Nuestras sucursales</a></li>
+            <li><a href="/SoporteTecnico">Soporte técnico</a></li>
           </ul>
         </div>
         <div className="footer-column">
           <h4>Recursos</h4>
           <ul>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Colores</a></li>
-            <li><a href="#">Desarrolladores</a></li>
-            <li><a href="#">Librería de recursos</a></li>
+          <li><a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">Blog</a></li>
+            <li><a href="/PaletaColores">Colores</a></li>
+            <li><a href="/LibreriaRecursos">Librería de recursos</a></li>
           </ul>
         </div>
       </div>

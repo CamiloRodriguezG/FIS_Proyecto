@@ -1,5 +1,6 @@
 // src/components/Contacto.js
 import React from 'react';
+import './Contacto.css'; // Asegúrate de importar el CSS
 
 const Contacto = () => {
   return (

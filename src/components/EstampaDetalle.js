@@ -86,6 +86,7 @@ const EstampaDetalle = ({ estampa, onClose }) => {
       Cantidad: ${cantidad}
       Diseño: ${diseño === 'otro' ? descripcionPersonalizada : diseño}
       Precio Total: $${precioTotal.toLocaleString()}`);
+
   };
 
   const handleAñadirAlCarrito = () => {
@@ -99,6 +100,7 @@ const EstampaDetalle = ({ estampa, onClose }) => {
       Precio Total: $${precioTotal.toLocaleString()}`);
       
   };
+  
 
   return (
     <div className="detalle-contenedor">
